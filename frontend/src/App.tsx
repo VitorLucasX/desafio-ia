@@ -54,9 +54,7 @@ function App() {
     let fullArticle = '';
 
     try {
-      // IMPORTANTE: Troque a URL abaixo pela URL do seu backend no Render quando fizer o deploy!
-      const API_URL = 'http://localhost:3001/generate-article-stream';
-      // const API_URL = 'https://seu-backend.onrender.com/generate-article-stream';
+      const API_URL = 'https://desafio-ia-backend.onrender.com';
 
       const response = await fetch(API_URL, {
         method: 'POST',
