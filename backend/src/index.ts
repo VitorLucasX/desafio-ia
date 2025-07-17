@@ -8,15 +8,12 @@ const app = express();
 const port = 3001;
 
 const whitelist = [
-    'http://localhost:5173', // Acesso para desenvolvimento local
-    'https://desafio-ia-vitor.vercel.app' // Acesso para o meu site em produção
+    'http://localhost:5173',
+    'https://desafio-ia.vercel.app' // EXATAMENTE ASSIM, SEM BARRA NO FINAL E SEM "-vitor"
 ];
 
 const corsOptions = {
     origin: function (origin: string | undefined, callback: (err: Error | null, allow?: boolean) => void) {
-        
-        // ADICIONE ESTA LINHA PARA DEPURAR
-        console.log('Requisição recebida da origem:', origin);
 
         if (!origin || whitelist.indexOf(origin) !== -1) {
             callback(null, true);
