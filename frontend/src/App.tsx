@@ -54,7 +54,7 @@ function App() {
     let fullArticle = '';
 
     try {
-      const API_URL = 'https://desafio-ia-backend.onrender.com';
+      const API_URL = 'https://desafio-ia-backend.onrender.com/generate-article-stream';
 
       const response = await fetch(API_URL, {
         method: 'POST',
