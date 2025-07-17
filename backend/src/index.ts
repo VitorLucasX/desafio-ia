@@ -7,7 +7,23 @@ dotenv.config();
 const app = express();
 const port = 3001;
 
-app.use(cors());
+const whitelist = [
+    'http://localhost:5173', // Acesso para desenvolvimento local
+    'https://desafio-ia-vitor.vercel.app' // Acesso para o meu site em produção
+];
+
+const corsOptions = {
+    origin: function (origin: string | undefined, callback: (err: Error | null, allow?: boolean) => void) {
+        // Permite requisições sem 'origin' (como Postman ou apps mobile) ou se a origem estiver na whitelist
+        if (!origin || whitelist.indexOf(origin) !== -1) {
+            callback(null, true);
+        } else {
+            callback(new Error('Acesso não permitido por CORS'));
+        }
+    }
+};
+
+app.use(cors(corsOptions));
 app.use(express.json());
 
 if (!process.env.GOOGLE_API_KEY) {
