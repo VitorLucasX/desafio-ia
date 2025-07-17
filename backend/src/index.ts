@@ -14,7 +14,10 @@ const whitelist = [
 
 const corsOptions = {
     origin: function (origin: string | undefined, callback: (err: Error | null, allow?: boolean) => void) {
-        // Permite requisições sem 'origin' (como Postman ou apps mobile) ou se a origem estiver na whitelist
+        
+        // ADICIONE ESTA LINHA PARA DEPURAR
+        console.log('Requisição recebida da origem:', origin);
+
         if (!origin || whitelist.indexOf(origin) !== -1) {
             callback(null, true);
         } else {
@@ -66,6 +69,9 @@ app.post('/generate-article-stream', async (req: Request, res: Response) => {
   }
 });
 
+app.get('/', (req, res) => {
+    res.send('API do Gerador de Artigos está no ar e funcionando!');
+});
 
 app.listen(port, () => {
   console.log(`Servidor backend rodando em http://localhost:${port}`);
