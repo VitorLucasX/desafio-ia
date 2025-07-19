@@ -9,7 +9,7 @@ const port = 3001;
 
 const whitelist = [
     'http://localhost:5173',
-    'https://desafio-ia.vercel.app' // EXATAMENTE ASSIM, SEM BARRA NO FINAL E SEM "-vitor"
+    'https://desafio-ia.vercel.app'
 ];
 
 const corsOptions = {
